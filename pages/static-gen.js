@@ -11,6 +11,7 @@ function HomePage({ pokemon }) {
     <div>
       {pokemon.map((poke) => (
         <div key={poke.name}>
+          <img src={poke.imageUrl} />
           <p>{poke.name}</p>
           <p>
             Height: {poke.height} | Weight: {poke.weight}
@@ -36,6 +37,7 @@ export const getStaticProps = async () => {
     name: r.data.name,
     height: r.data.height,
     weight: r.data.weight,
+    imageUrl: r.data.sprites.front_default,
   }));
 
   console.log(results);
