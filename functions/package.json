@@ -1,0 +1,12 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "charge-card.js",
+  "author": "Jon Meyers",
+  "license": "ISC",
+  "dependencies": {
+    "gray-matter": "^4.0.2",
+    "stripe": "^8.129.0"
+  }
+}
