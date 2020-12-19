@@ -12,6 +12,7 @@
   "author": "Jon Meyers",
   "license": "ISC",
   "dependencies": {
+    "@stripe/stripe-js": "^1.11.0",
     "axios": "^0.21.0",
     "gray-matter": "^4.0.2",
     "marked": "^1.2.6",
@@ -19,6 +20,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
+    "stripe": "^8.129.0",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7"
   },
