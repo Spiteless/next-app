@@ -1,16 +1,15 @@
 const fs = require("fs");
 const matter = require("gray-matter");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const path = require("path");
 
 const getProducts = () => {
-  const directory = path.join(__dirname, `/content`);
+  const directory = `${process.cwd()}/content`;
   const filenames = fs.readdirSync(directory);
 
   const products = filenames.map((filename) => {
     // read the file from fs
     const fileContent = fs
-      .readFileSync(path.join(__dirname, `/content, ${directory}/${filename}`))
+      .readFileSync(require(`${directory}/${filename}`))
       .toString();
     // pull out frontmatter => name
     const { data } = matter(fileContent);
