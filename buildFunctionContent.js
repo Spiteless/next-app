@@ -17,7 +17,7 @@ const getProducts = () => {
   return products;
 };
 
-fs.writeFileSync(
-  `${process.cwd()}/functions/products.json`,
-  JSON.stringify(getProducts())
-);
+const filepath = `${process.cwd()}/functions/products.json`;
+const products = getProducts();
+
+fs.writeFileSync(filepath, JSON.stringify(products));
