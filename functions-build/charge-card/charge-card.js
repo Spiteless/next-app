@@ -3,7 +3,7 @@ const matter = require("gray-matter");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const getProducts = () => {
-  const directory = `content`;
+  const directory = `${process.cwd()}/content`;
   const filenames = fs.readdirSync(directory);
 
   const products = filenames.map((filename) => {
