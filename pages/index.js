@@ -13,7 +13,7 @@ const Container = styled.div`
   transition: transform 0.3s;
 
   &:hover {
-    transform: scale(1.02);
+    box-shadow: 0px 0px 1rem 6px #fefefe;
   }
 `;
 
@@ -26,10 +26,31 @@ const ProductsContainer = styled.div`
 
 const Price = styled.div`
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0.7rem;
   right: 1rem;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
 `;
+
+const Button = styled.button`
+  background: linear-gradient(to right, #fc00ff, #fc00ff);
+  /* font-size: 2rem; */
+  color: inherit;
+  outline: none;
+  border: none;
+  /* width: 100%; */
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  color: white;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 1rem;
+  font-size: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 
 const renderProduct = (product, addItemToCart) => {
   const handleClick = (e) => {
@@ -43,7 +64,7 @@ const renderProduct = (product, addItemToCart) => {
         <Container>
           <h1>{product.name}</h1>
           <p>{product.description}</p>
-          <button onClick={handleClick}>Add to cart</button>
+          <Button onClick={handleClick}>Add to cart</Button>
           <Price>${product.price / 100}</Price>
         </Container>
       </UnstyledLink>
