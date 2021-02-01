@@ -8,7 +8,7 @@ const Foot = styled.footer`
   background: white;
   padding: 2rem 0 2rem 0;
   margin-top: 5rem;
-  position: absolute;
+  /* position: fixed; */
   bottom: 0;
   width: 100%;
 `;
