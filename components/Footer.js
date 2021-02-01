@@ -4,16 +4,18 @@ import UnstyledLink from "./styled/UnstyledLink";
 import { FiShoppingCart } from "react-icons/fi";
 import useCart from "../hooks/useCart";
 
-const Nav = styled.nav`
+const Foot = styled.footer`
   background: white;
   padding: 2rem;
+  margin-top: 5rem;
 `;
 
-const NavContainer = styled.div`
+const FootContainer = styled.div`
+  /* padding-top: 3rem; */
   width: 100%;
   max-width: 768px;
   margin: 0 auto;
-  font-size: 2rem;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
 `;
@@ -26,7 +28,7 @@ const ShoppingCart = styled(FiShoppingCart)`
   }
 `;
 
-const Navbar = () => {
+const Footer = () => {
   const { openCart } = useCart();
 
   const handleClick = () => {
@@ -34,15 +36,14 @@ const Navbar = () => {
   };
 
   return (
-    <Nav>
-      <NavContainer>
+    <Foot>
+      <FootContainer>
         <Link href="/">
           <UnstyledLink>Lost Coast Chocolates</UnstyledLink>
         </Link>
-        <ShoppingCart onClick={handleClick} />
-      </NavContainer>
-    </Nav>
+      </FootContainer>
+    </Foot>
   );
 };
 
-export default Navbar;
+export default Footer;

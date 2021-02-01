@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
   // talking to Stripe
   const lineItems = cartWithProducts.map((product) => ({
     price_data: {
-      currency: "aud",
+      currency: "usd",
       product_data: {
         name: product.name,
       },

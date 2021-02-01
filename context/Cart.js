@@ -49,6 +49,17 @@ const Cart = ({ children }) => {
     }
   };
 
+  const decreaseItemQuantity = (product, qty = 1) => {
+    const item = cart.find((i) => i.id === product.id);
+    item.qty -= qty;
+    // alert(`item: ${item.qty} id:${item.id}`)
+    if (item.qty === 0) {
+      removeItemFromCart(item.id)
+    } else {
+      setCart([...cart]);
+    }
+  };
+
   const removeItemFromCart = (id) => {
     const newCart = cart.filter((item) => {
       return item.id !== id;
@@ -70,6 +81,7 @@ const Cart = ({ children }) => {
     isOpen,
     total,
     clearCart,
+    decreaseItemQuantity,
   };
 
   return <Context.Provider value={exposed}>{children}</Context.Provider>;
