@@ -37,7 +37,7 @@ const Navbar = () => {
     <Nav>
       <NavContainer>
         <Link href="/">
-          <UnstyledLink>Super Store</UnstyledLink>
+          <UnstyledLink>Lost Coast Chocolates</UnstyledLink>
         </Link>
         <ShoppingCart onClick={handleClick} />
       </NavContainer>

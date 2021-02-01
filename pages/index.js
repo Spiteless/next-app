@@ -32,7 +32,7 @@ const Price = styled.div`
 `;
 
 const Button = styled.button`
-  background: linear-gradient(to right, #fc00ff, #fc00ff);
+  background: linear-gradient(to right, #000, #000);
   /* font-size: 2rem; */
   color: inherit;
   outline: none;
