@@ -6,8 +6,11 @@ import useCart from "../hooks/useCart";
 
 const Foot = styled.footer`
   background: white;
-  padding: 2rem;
+  padding: 2rem 0 2rem 0;
   margin-top: 5rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 `;
 
 const FootContainer = styled.div`
