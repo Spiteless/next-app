@@ -1,7 +1,7 @@
 ---
-id: 4
-name: Pokemon blue
-description: The best Pokemon game that contains all 151 Pokemon
+id: 103
+name: 80% Cacao Bars x5
+description: Least sweet. Perfect for recently failed bar exam.
 price: 2000
 ---
 
