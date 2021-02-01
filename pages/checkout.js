@@ -24,7 +24,7 @@ const Total = styled.p`
 `;
 
 const Button = styled.button`
-  background: linear-gradient(to right, #fc00ff, #00dbde);
+  background: linear-gradient(to right, #000, #000);
   font-size: 2rem;
   color: inherit;
   outline: none;
@@ -32,6 +32,20 @@ const Button = styled.button`
   width: 100%;
   padding: 1rem;
   color: white;
+
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+
+  border-image-source: linear-gradient(to left, #EEB609, #B78628);
+
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 0px 1rem 6px #B78628;
+    /* transition: transform 0.2s ease-in; */
+  }
 
   &:hover {
     cursor: pointer;

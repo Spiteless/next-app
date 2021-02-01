@@ -78,7 +78,7 @@ const Total = styled.p`
   font-size: 1.5rem;
 `;
 
-const Button = styled.button`
+const Checkout = styled.button`
   background: linear-gradient(to right, #000, #000);
   font-size: 2rem;
   color: inherit;
@@ -167,7 +167,7 @@ const Cart = () => {
               <span>Total</span>
               <span>${total / 100}</span>
             </Total>
-            <Button onClick={navigateToCheckout}>Checkout</Button>
+            <Checkout onClick={navigateToCheckout}>Checkout</Checkout>
           </>
         ) : (
           <p>Cart is empty!</p>
