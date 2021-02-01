@@ -5,9 +5,9 @@ import styled from "styled-components";
 import UnstyledLink from "../components/styled/UnstyledLink";
 import useCart from "../hooks/useCart";
 
-const Container = styled.div`
+const ProductCard = styled.div`
   background: white;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem 1rem 1rem;
   min-height: 200px;
   position: relative;
   transition: transform 0.3s;
@@ -31,18 +31,21 @@ const Price = styled.div`
   font-size: 2.2rem;
 `;
 
+const Name = styled.h1`
+  margin-top: 0px;
+`
+
 const Button = styled.button`
   background: linear-gradient(to right, #000, #000);
-  /* font-size: 2rem; */
   color: inherit;
   outline: none;
   border: none;
-  /* width: 100%; */
   padding: 0.5rem 1rem;
+  margin-bottom: 0.32rem;
   font-weight: 600;
   color: white;
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0.65rem;
   left: 1rem;
   font-size: 1.5rem;
 
@@ -61,23 +64,27 @@ const renderProduct = (product, addItemToCart) => {
   return (
     <Link key={product.id} href={product.slug}>
       <UnstyledLink>
-        <Container>
-          <h1>{product.name}</h1>
+        <ProductCard>
+          <Name>{product.name}</Name>
           <p>{product.description}</p>
           <Button onClick={handleClick}>Add to cart</Button>
           <Price>${product.price / 100}</Price>
-        </Container>
+        </ProductCard>
       </UnstyledLink>
     </Link>
   );
 };
 
 const HomePage = (props) => {
+  const { products } = props
   const { cart, addItemToCart } = useCart();
   console.log(cart);
+
+  const sortedProducts = products.sort( (a, b) => a.sort_order - b.sort_order )
   return (
     <ProductsContainer>
-      {props.products.map((product) => renderProduct(product, addItemToCart))}
+      {console.log(sortedProducts)}
+      {sortedProducts.map((product) => renderProduct(product, addItemToCart))}
     </ProductsContainer>
   );
 };
