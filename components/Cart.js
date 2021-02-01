@@ -36,16 +36,36 @@ const Content = styled.div`
 const Title = styled.h2`
   font-size: 2.5rem;
   font-weight: 400;
-  border-bottom: 1px solid #efefef;
+  /* border-bottom: 1px solid #efefef; */
+  margin: 0 0 0 0;
 `;
 
 const Item = styled.li`
   list-style: none;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #efefef;
-  margin-bottom: 0.25rem;
+  padding-bottom: 1.0rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2.25rem;
+  position: relative;
 `;
+
+const PlusMinus = styled.span`
+  /* border: 1px red solid; */
+  border-bottom: 2px solid #a0a0a0;
+  position: absolute;
+  font-size: 1.3rem;
+  top:1.2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+`
+
+const Ticker = styled.span`
+  margin-bottom: 0.2rem;
+  font-weight: 800;
+  &:hover{ cursor: pointer;}
+`
 
 const Ul = styled.ul`
   padding: 0;
@@ -59,7 +79,7 @@ const Total = styled.p`
 `;
 
 const Button = styled.button`
-  background: linear-gradient(to right, #fc00ff, #00dbde);
+  background: linear-gradient(to right, #000, #000);
   font-size: 2rem;
   color: inherit;
   outline: none;
@@ -68,16 +88,40 @@ const Button = styled.button`
   padding: 1rem;
   color: white;
 
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+
+  border-image-source: linear-gradient(to left, #EEB609, #B78628);
+
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 0px 1rem 6px #B78628;
+    /* transition: transform 0.2s ease-in; */
+  }
+
   &:hover {
     cursor: pointer;
   }
 `;
 
 const Cart = () => {
-  const { cart, isOpen, openCart, closeCart, total } = useCart();
+  const {
+    cart,
+    isOpen,
+    openCart,
+    closeCart,
+    total,
+    addItemToCart,
+    removeItemFromCart,
+    decreaseItemQuantity,
+  } = useCart();
   const router = useRouter();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    console.log(e)
     closeCart();
   };
 
@@ -89,7 +133,7 @@ const Cart = () => {
   return (
     <Container isOpen={isOpen}>
       <XContainer>
-        <X onClick={handleClick} />
+        <X name="X" onClick={handleClick} />
       </XContainer>
       <Content>
         <Title>Cart</Title>
@@ -102,6 +146,18 @@ const Cart = () => {
                     <span>
                       {item.qty}x {item.name}
                     </span>
+                    <PlusMinus>
+                      <Ticker
+                        onClick={() => {
+                          addItemToCart(item)
+                        }}
+                      >+</Ticker>
+                      <Ticker
+                        onClick={() => {
+                          decreaseItemQuantity(item)
+                        }}
+                      >-</Ticker> 
+                    </PlusMinus>
                     <span>${item.price / 100}</span>
                   </Item>
                 );
