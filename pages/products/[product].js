@@ -3,37 +3,66 @@ import matter from "gray-matter";
 import marked from "marked";
 import styled from "styled-components";
 import Page from "../../components/styled/Page";
+import useCart from "../../hooks/useCart";
+
+// pages\products\[product].js
+// hooks\useCart.js
 
 const Title = styled.div`
-  display: flex;
-  align-items: flex-end;
+  /* display: flex;
+  align-items: flex-end; */
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  padding-top: 0px;
 `;
 
 const SubTitle = styled.p`
-  padding: 0.75rem 0.5rem;
+  margin-top: -1.25rem;
   color: #666;
 `;
 
 const Price = styled.span`
   font-size: 2rem;
-  background: #05d7df;
+  background: #000;
   padding: 0.25rem 1rem;
-  border-radius: 5px;
   color: white;
   font-weight: 800;
   margin-bottom: 1rem;
   display: inline-block;
+
+  border-radius: 5px;
+  /* border: 10px solid; */
+  /* border-image-slice: 1; */
+  /* border-width: 4px; */
+
+  /* border-image-source: linear-gradient(to left, #EEB609, #B78628); */
+
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 0px 1rem 6px #B78628;
+    cursor: pointer;
+    /* transition: transform 0.2s ease-in; */
+  }
 `;
 
 const Product = ({ product: { data, content } }) => {
+  const { addItemToCart } = useCart();
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    addItemToCart(data);
+  };
+
   const html = marked(content);
   return (
     <Page>
       <Title>
         <h1>{data.name}</h1>
-        <SubTitle>{data.description}</SubTitle>
       </Title>
-      <Price>${data.price / 100}</Price>
+        <SubTitle>{data.description}</SubTitle>
+      <Price onClick={handleClick}>${data.price / 100}</Price>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </Page>
   );
