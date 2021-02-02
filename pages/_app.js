@@ -3,7 +3,12 @@ import { Normalize } from "styled-normalize";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CartProvider from "../context/Cart";
-import Cart from "../components/Cart";
+import CartSidebar from "../components/CartSidebar";
+
+// import { Elements } from "@stripe/react-stripe-js"
+// import { loadStripe } from "@stripe/stripe-js"
+
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY)
 
 const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap");
@@ -14,6 +19,9 @@ const Container = styled.div`
   font-family: "Padauk", sans-serif;
   color: #444;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const Page = styled.div`
@@ -22,19 +30,29 @@ const Page = styled.div`
   margin: 0 auto;
 `;
 
+const MainContent = styled.div`
+  width: 100%;
+  height: 100%;
+  /* min-height: 70vh; */
+`
+
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <CartProvider>
-      <Container>
-        <Normalize />
-        <Navbar />
-        <Page>
-          <Component {...pageProps} />
-        </Page>
-        <Cart />
-        <Footer />
-      </Container>
-    </CartProvider>
+    // <Elements stripe={stripePromise}>
+      <CartProvider>
+        <Container>
+          <Normalize />
+          <Navbar />
+          <MainContent>
+            <Page>
+              <Component {...pageProps} />
+            </Page>
+          </MainContent>
+          <Footer />
+          <CartSidebar />
+        </Container>
+      </CartProvider>
+    // </Elements>
   );
 };
 
